@@ -36,7 +36,6 @@ legend.onAdd = function (map) {
     		'<span>Data from the <a href=\"http://www.dec.ny.gov/chemical/90321.html\">NYSDEC</a><br />' + 
     		'Rainfall data from <a href=\"http://www.wunderground.com/weather/api\">Weather Underground</a></span><br />';
 
-;
     return div;
 };
 
@@ -152,14 +151,15 @@ function setDates(num) {
 
 function drawDots(dataset, dateView) {
 
-	console.log(dataset);
+	//console.log(dataset);
 
     // load dataset into crossfilter 
 	var cf = crossfilter(dataset);
 
 	// set dimensions for filtering by sample date
 	var bySampleDate = cf.dimension(function(d) { return d.discovery_date_object; });
-	console.log(bySampleDate);
+
+	//console.log(bySampleDate);
 
 	// default values for filterMin and filterMax
 	var datadateMin = d3.min(dataset, function(d) { return d.discovery_date_object; });
@@ -200,7 +200,7 @@ function initialize_map(filterMin, filterMax, datadateMax, datadateMin, bySample
 
 	// return all data within the filter
 	var dataBySampleDate = bySampleDate.top(Infinity);
-	console.log(dataBySampleDate);
+	//console.log(dataBySampleDate);
 
 	// iterate thorugh dataset and create a markers and a marker group for the points
 	$.each(dataBySampleDate, function( i, d ) {
